@@ -41,20 +41,41 @@ const lenghtLabelText3 = document.createTextNode('6 caracteres');
 const rulesContainer = document.createElement('div');
 const rulesTitle = document.createElement('h3');
 const rulesTitleText = document.createTextNode('Reglas');
+rulesContainer.appendChild(rulesTitle);
+rulesTitle.appendChild(rulesTitleText);
+
+
+const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
+
+for(let elem of rules){
+        const inputCont = document.createElement('div');
+        const rulesInput = document.createElement('input');
+        rulesInput.setAttribute('type', 'radio');
+        rulesInput.setAttribute('name', 'rules');
+        rulesInput.setAttribute('id', `is-${elem}`);
+        rulesInput.setAttribute('value', `${elem}`);
+        const rulesLabel = document.createElement('label');
+        rulesLabel.setAttribute('for', `is-${elem}`);
+        const rulesLabelText = document.createTextNode(elem);
+
+        rulesContainer.appendChild(inputCont);
+        inputCont.appendChild(rulesInput);
+        inputCont.appendChild(rulesLabel);
+        rulesLabel.appendChild(rulesLabelText);
+
+}
+
+
 
         // Rules Form //
-const inputCont4 = document.createElement('div');
-const inputCont5 = document.createElement('div');
-const inputCont6 = document.createElement('div');
-const rulesInput1 = document.createElement('input');
-const rulesInput2 = document.createElement('input');
-const rulesInput3 = document.createElement('input');
-const rulesLabel1 = document.createElement('label');
-const rulesLabel2 = document.createElement('label');
-const rulesLabel3 = document.createElement('label');
-const rulesLabelText1 = document.createTextNode('Solo letras');
-const rulesLabelText2 = document.createTextNode('Lectura Simple');
-const rulesLabelText3 = document.createTextNode('Todos los caracteres');
+// const inputCont5 = document.createElement('div');
+// const inputCont6 = document.createElement('div');
+// const rulesInput2 = document.createElement('input');
+// const rulesInput3 = document.createElement('input');
+// const rulesLabel2 = document.createElement('label');
+// const rulesLabel3 = document.createElement('label');
+// const rulesLabelText2 = document.createTextNode('Lectura Simple');
+// const rulesLabelText3 = document.createTextNode('Todos los caracteres');
 
     //Characters Section //
 const charactContainer = document.createElement('div');
@@ -130,25 +151,24 @@ lenghtLabel3.appendChild(lenghtLabelText3);
 
      // Rules Section //
 
-rulesContainer.appendChild(rulesTitle);
-rulesTitle.appendChild(rulesTitleText);
+
 
         // Rules Form //
 
-rulesContainer.appendChild(inputCont4);
-inputCont4.appendChild(rulesInput1);
-inputCont4.appendChild(rulesLabel1);
-rulesLabel1.appendChild(rulesLabelText1);
+// rulesContainer.appendChild(inputCont4);
+// inputCont4.appendChild(rulesInput1);
+// inputCont4.appendChild(rulesLabel1);
+// rulesLabel1.appendChild(rulesLabelText1);
 
-rulesContainer.appendChild(inputCont5);
-inputCont5.appendChild(rulesInput2);
-inputCont5.appendChild(rulesLabel2);
-rulesLabel2.appendChild(rulesLabelText2);
+// rulesContainer.appendChild(inputCont5);
+// inputCont5.appendChild(rulesInput2);
+// inputCont5.appendChild(rulesLabel2);
+// rulesLabel2.appendChild(rulesLabelText2);
 
-rulesContainer.appendChild(inputCont6);
-inputCont6.appendChild(rulesInput3);
-inputCont6.appendChild(rulesLabel3);
-rulesLabel3.appendChild(rulesLabelText3);
+// rulesContainer.appendChild(inputCont6);
+// inputCont6.appendChild(rulesInput3);
+// inputCont6.appendChild(rulesLabel3);
+// rulesLabel3.appendChild(rulesLabelText3);
 
 
     // Characters Section //
