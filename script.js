@@ -4,46 +4,89 @@
 const body = document.getElementById('body');
 const mainTitle = document.createElement('h1');
 const mainTitleText = document.createTextNode('Generador de Contraseñas');
+body.appendChild(mainTitle);
+mainTitle.appendChild(mainTitleText);
 
 // Final Password Card //
+
 const passContainer = document.createElement('div');
-const genPass = document.createTextNode(''); // y si le ponemos finalPass??
+passContainer.setAttribute('class','card')
+const finalPass = document.createTextNode(''); 
 const iconContainer = document.createElement('div');
-const copyIcon = document.createElement('i');
+const copyIcon = document.createElement('span');
+const copyIconText = document.createTextNode('content_copy');
+copyIcon.appendChild(copyIconText);
+copyIcon.setAttribute('class','material-icons-outlined'); //not working
 const refreshIcon = document.createElement('i');
 
+ // Append Password Card elemnts //
+
+body.appendChild(passContainer);
+passContainer.appendChild(finalPass);
+passContainer.appendChild(iconContainer);
+iconContainer.appendChild(copyIcon);
+iconContainer.appendChild(refreshIcon);
+
 // Form Card //
+
 const formContainer = document.createElement('div');
+formContainer.setAttribute('class','card');
+formContainer.classList.add('cardLarge');
 const title = document.createElement('h2');
 const titleText = document.createTextNode('Personalice su contraseña');
+const form = document.createElement('form');
+form.setAttribute('class','form');
 
-    // Lenght section //
-const lenghtContainer = document.createElement('div');
+// Append Form Card elemnts //
+
+body.appendChild(formContainer);
+formContainer.appendChild(title);
+title.appendChild(titleText);
+formContainer.appendChild(form);
+
+
+// --- Form Sections --- //
+
+// Lenght section //
+
+const lenghtContainer = document.createElement('fieldset');
 const lenghtTitle = document.createElement('h3');
 const lenghtTitleText = document.createTextNode('Longitud');
+lenghtContainer.appendChild(lenghtTitle);
+lenghtTitle.appendChild(lenghtTitleText);
+form.appendChild(lenghtContainer);
 
-        // Lenght Form //
-const inputCont1 = document.createElement('div');
-const inputCont2 = document.createElement('div');
-const inputCont3 = document.createElement('div');
-const lenghtInput1 = document.createElement('input');
-const lenghtInput2 = document.createElement('input');
-const lenghtInput3 = document.createElement('input');
-const lenghtLabel1 = document.createElement('label');
-const lenghtLabel2 = document.createElement('label');
-const lenghtLabel3 = document.createElement('label');
-const lenghtLabelText1 = document.createTextNode('12 caracteres');
-const lenghtLabelText2 = document.createTextNode('9 caracteres');
-const lenghtLabelText3 = document.createTextNode('6 caracteres');
+
+const lenght = [6, 9, 12];
+
+for(let elem of lenght){ //falta crear el form
+        const inputCont = document.createElement('div');
+        const lenghtInput = document.createElement('input');
+        lenghtInput.setAttribute('type', 'radio');
+        lenghtInput.setAttribute('name', 'lenght');
+        lenghtInput.setAttribute('id', `is-${elem}`);
+        lenghtInput.setAttribute('value', `${elem}`);
+        const lenghtLabel = document.createElement('label');
+        lenghtLabel.setAttribute('for', `is-${elem}`);
+        const lenghtLabelText = document.createTextNode(elem + ' caracteres');
+
+        lenghtContainer.appendChild(inputCont);
+        inputCont.appendChild(lenghtInput);
+        inputCont.appendChild(lenghtLabel);
+        lenghtLabel.appendChild(lenghtLabelText);
+
+}
+  
 
 
     // Rules section //
-const rulesContainer = document.createElement('div');
+
+const rulesContainer = document.createElement('fieldset');
 const rulesTitle = document.createElement('h3');
 const rulesTitleText = document.createTextNode('Reglas');
 rulesContainer.appendChild(rulesTitle);
 rulesTitle.appendChild(rulesTitleText);
-
+form.appendChild(rulesContainer);
 
 const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
 
@@ -66,134 +109,34 @@ for(let elem of rules){
 }
 
 
-
-        // Rules Form //
-// const inputCont5 = document.createElement('div');
-// const inputCont6 = document.createElement('div');
-// const rulesInput2 = document.createElement('input');
-// const rulesInput3 = document.createElement('input');
-// const rulesLabel2 = document.createElement('label');
-// const rulesLabel3 = document.createElement('label');
-// const rulesLabelText2 = document.createTextNode('Lectura Simple');
-// const rulesLabelText3 = document.createTextNode('Todos los caracteres');
-
     //Characters Section //
-const charactContainer = document.createElement('div');
+
+const charactContainer = document.createElement('fieldset');
 const charactTitle = document.createElement('h3');
 const charactTitleText = document.createTextNode('Caracteres');
-
-        // Characters Form //
-const inputCont7 = document.createElement('div');
-const inputCont8 = document.createElement('div');
-const inputCont9 = document.createElement('div');
-const inputCont10 = document.createElement('div');
-const charactInput1 = document.createElement('input');
-const charactInput2 = document.createElement('input');
-const charactInput3 = document.createElement('input');
-const charactInput4 = document.createElement('input');
-const charactLabel1 = document.createElement('label');
-const charactLabel2 = document.createElement('label');
-const charactLabel3 = document.createElement('label');
-const charactLabel4 = document.createElement('label');
-const charactLabelText1 = document.createTextNode('Mayúsculas');
-const charactLabelText2 = document.createTextNode('Minúsculas');
-const charactLabelText3 = document.createTextNode('Números');
-const charactLabelText4 = document.createTextNode('Símbolos');
-
-
-// ---Set attribute elements--- //
-
-
-
-// ---Append element--- //
-
-body.appendChild(mainTitle);
-mainTitle.appendChild(mainTitleText);
-
-// Final Password card //
-
-body.appendChild(passContainer);
-passContainer.appendChild(genPass);
-passContainer.appendChild(iconContainer);
-iconContainer.appendChild(copyIcon);
-iconContainer.appendChild(refreshIcon);
-
-// General Form Card //
-
-body.appendChild(formContainer);
-formContainer.appendChild(title);
-title.appendChild(titleText);
-formContainer.appendChild(lenghtContainer);
-formContainer.appendChild(rulesContainer);
-formContainer.appendChild(charactContainer);
-
-    // Length Section //
-
-lenghtContainer.appendChild(lenghtTitle);
-lenghtTitle.appendChild(lenghtTitleText);
-
-        // Length Form //
-
-lenghtContainer.appendChild(inputCont1);
-inputCont1.appendChild(lenghtInput1);
-inputCont1.appendChild(lenghtLabel1);
-lenghtLabel1.appendChild(lenghtLabelText1);
-
-lenghtContainer.appendChild(inputCont2);
-inputCont2.appendChild(lenghtInput2);
-inputCont2.appendChild(lenghtLabel2);
-lenghtLabel2.appendChild(lenghtLabelText2);
-
-lenghtContainer.appendChild(inputCont3);
-inputCont3.appendChild(lenghtInput3);
-inputCont3.appendChild(lenghtLabel3);
-lenghtLabel3.appendChild(lenghtLabelText3);
-
-     // Rules Section //
-
-
-
-        // Rules Form //
-
-// rulesContainer.appendChild(inputCont4);
-// inputCont4.appendChild(rulesInput1);
-// inputCont4.appendChild(rulesLabel1);
-// rulesLabel1.appendChild(rulesLabelText1);
-
-// rulesContainer.appendChild(inputCont5);
-// inputCont5.appendChild(rulesInput2);
-// inputCont5.appendChild(rulesLabel2);
-// rulesLabel2.appendChild(rulesLabelText2);
-
-// rulesContainer.appendChild(inputCont6);
-// inputCont6.appendChild(rulesInput3);
-// inputCont6.appendChild(rulesLabel3);
-// rulesLabel3.appendChild(rulesLabelText3);
-
-
-    // Characters Section //
-
 charactContainer.appendChild(charactTitle);
 charactTitle.appendChild(charactTitleText);
+form.appendChild(charactContainer);
 
-        // Characters Form //
 
-charactContainer.appendChild(inputCont7);
-inputCont7.appendChild(charactInput1);
-inputCont7.appendChild(charactLabel1);
-charactLabel1.appendChild(charactLabelText1);
+const charact = ['Mayúsculas', 'Minúsculas', 'Números', 'Símbolos'];
 
-charactContainer.appendChild(inputCont8);
-inputCont8.appendChild(charactInput2);
-inputCont8.appendChild(charactLabel2);
-charactLabel2.appendChild(charactLabelText2);
+for(let elem of charact){
+        const inputCont = document.createElement('div');
+        const charactInput = document.createElement('input');
+        charactInput.setAttribute('type', 'checkbox');
+        charactInput.setAttribute('name', 'charact');
+        charactInput.setAttribute('id', `is-${elem}`);
+        charactInput.setAttribute('value', `${elem}`);
+        const charactLabel = document.createElement('label');
+        charactLabel.setAttribute('for', `is-${elem}`);
+        const charactLabelText = document.createTextNode(elem);
 
-charactContainer.appendChild(inputCont9);
-inputCont9.appendChild(charactInput3);
-inputCont9.appendChild(charactLabel3);
-charactLabel3.appendChild(charactLabelText3);
+        charactContainer.appendChild(inputCont);
+        inputCont.appendChild(charactInput);
+        inputCont.appendChild(charactLabel);
+        charactLabel.appendChild(charactLabelText);
 
-charactContainer.appendChild(inputCont10);
-inputCont10.appendChild(charactInput4);
-inputCont10.appendChild(charactLabel4);
-charactLabel4.appendChild(charactLabelText4);
+}
+
+
