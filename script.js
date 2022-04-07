@@ -17,24 +17,60 @@ const formContainer = document.createElement('div');
 const title = document.createElement('h2');
 const titleText = document.createTextNode('Personalice su contraseña');
 
-    // Lenght section //
+// Lenght section //
+
 const lenghtContainer = document.createElement('div');
 const lenghtTitle = document.createElement('h3');
 const lenghtTitleText = document.createTextNode('Longitud');
+const lenghtForm = document.createElement('form');
+lenghtContainer.appendChild(lenghtTitle);
+lenghtTitle.appendChild(lenghtTitleText);
+lenghtContainer.append(lenghtForm)
+
+
+const lenght = [6, 9, 12, 15];
+
+for(let elem of lenght){ //falta crear el form
+         const inputCont = document.createElement('div');
+        const lenghtInput = document.createElement('input');
+        lenghtInput.setAttribute('type', 'radio');
+        lenghtInput.setAttribute('name', 'lenght');
+        lenghtInput.setAttribute('id', `is-${elem}`);
+        lenghtInput.setAttribute('value', `${elem}`);
+        const lenghtLabel = document.createElement('label');
+        lenghtLabel.setAttribute('for', `is-${elem}`);
+        const lenghtLabelText = document.createTextNode(elem + ' caracteres');
+
+        lenghtForm.appendChild(inputCont);
+        inputCont.appendChild(lenghtInput);
+        inputCont.appendChild(lenghtLabel);
+        lenghtLabel.appendChild(lenghtLabelText);
+
+}
+
+
+
+
+
+
+
 
         // Lenght Form //
-const inputCont1 = document.createElement('div');
-const inputCont2 = document.createElement('div');
-const inputCont3 = document.createElement('div');
-const lenghtInput1 = document.createElement('input');
-const lenghtInput2 = document.createElement('input');
-const lenghtInput3 = document.createElement('input');
-const lenghtLabel1 = document.createElement('label');
-const lenghtLabel2 = document.createElement('label');
-const lenghtLabel3 = document.createElement('label');
-const lenghtLabelText1 = document.createTextNode('12 caracteres');
-const lenghtLabelText2 = document.createTextNode('9 caracteres');
-const lenghtLabelText3 = document.createTextNode('6 caracteres');
+// const inputCont1 = document.createElement('div');
+// const inputCont2 = document.createElement('div');
+// const inputCont3 = document.createElement('div');
+// const lenghtInput1 = document.createElement('input');
+// const lenghtInput2 = document.createElement('input');
+// const lenghtInput3 = document.createElement('input');
+// const lenghtLabel1 = document.createElement('label');
+// const lenghtLabel2 = document.createElement('label');
+// const lenghtLabel3 = document.createElement('label');
+// const lenghtLabelText1 = document.createTextNode('12 caracteres');
+// const lenghtLabelText2 = document.createTextNode('9 caracteres');
+// const lenghtLabelText3 = document.createTextNode('6 caracteres');
+
+
+   
 
 
     // Rules section //
