@@ -185,7 +185,7 @@ document.getElementById("is-Solo letras").addEventListener('change', function (e
     });
 document.getElementById("is-Lectura simple").addEventListener('change', function (event) {
         if(event.target.value === 'Lectura simple'){
-                document.getElementById("is-Números"). = false;
+                // document.getElementById("is-Números"). = false;
                 document.getElementById("is-Números").disabled = false;
                 document.getElementById("is-Símbolos").disabled = true;
         }
