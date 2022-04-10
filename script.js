@@ -18,6 +18,7 @@ const copyIconText = document.createTextNode('content_copy');
 copyIcon.appendChild(copyIconText);
 copyIcon.setAttribute('class','material-icons-outlined'); //not working
 const refreshIcon = document.createElement('i');
+refreshIcon.setAttribute('class','fas fa-copy')
 
  // Append Password Card elemnts //
 
@@ -179,14 +180,16 @@ formCreator('Caracteres', charact, 'checkbox')
 
 document.getElementById("is-Solo letras").addEventListener('change', function (event) {
         if(event.target.value === 'Solo letras'){
+                document.getElementById("is-Números").checked = false;
                 document.getElementById("is-Números").disabled = true;
+                document.getElementById("is-Símbolos").checked = false;
                 document.getElementById("is-Símbolos").disabled = true;
         }
     });
 document.getElementById("is-Lectura simple").addEventListener('change', function (event) {
         if(event.target.value === 'Lectura simple'){
-                // document.getElementById("is-Números"). = false;
                 document.getElementById("is-Números").disabled = false;
+                document.getElementById("is-Símbolos").checked = false;
                 document.getElementById("is-Símbolos").disabled = true;
         }
     });
