@@ -154,7 +154,7 @@ function formCreator(title, elements, atributeType){
                 const inputCont = document.createElement('div');
                 const charactInput = document.createElement('input');
                 charactInput.setAttribute('type', atributeType);
-                charactInput.setAttribute('name', 'charact');
+                charactInput.setAttribute('name', elements);
                 charactInput.setAttribute('id', `is-${elem}`);
                 charactInput.setAttribute('value', `${elem}`);
                 const charactLabel = document.createElement('label');
