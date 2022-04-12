@@ -12,16 +12,16 @@ const pass = (length, rules, characters) => {
     const symb = '!@#$%^&*()'; 
     let finalPass = '';
     if(rules === 'solo letras'){
-        if(length === 6 && characters === 'minusculas'){
+        if( characters === 'minusculas'){
             let newCharacts = characts.toLowerCase();
-            for(let i = 0; i < 6; i++){
+            for(let i = 0; i < length; i++){
                 const random = Math.floor(Math.random()* newCharacts.length);
                 let elem = newCharacts.slice(random, random+1);
                 finalPass = finalPass.concat(elem);
             }
         return finalPass;
-    } else if (length === 6 && characters === 'mayusculas'){
-            for(let i = 0; i < 6; i++){
+    } else if (characters === 'mayusculas'){
+            for(let i = 0; i < length; i++){
                 const random = Math.floor(Math.random()* characts.length);
                 let elem = characts.slice(random, random+1);
                 finalPass = finalPass.concat(elem);
@@ -31,5 +31,5 @@ const pass = (length, rules, characters) => {
         }
 }
 
-const rta = pass(6, 'solo letras', 'minusculas');
+const rta = pass(12, 'solo letras', 'mayusculas');
 console.log(rta);
