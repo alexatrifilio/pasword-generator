@@ -178,12 +178,21 @@ function formCreator(title, elements, atributeType){
 
                 document.getElementById(`is-${elem}`).addEventListener('change', (event)=>{
                         let parameter = event.target.value;
+                        console.log(parameter);
 
                         if(document.getElementById(`is-${elem}`).checked === true){
-                                console.log('funciona event listener');
-                                if(values.length < 3){
+                                if(values.length < 2){
                                         values.push(parameter);
-                                } // no se como vaciarlo cuando ya son 3 para que arme otro.
+                                        console.log(values);
+                                }else if (values.length < 3){
+                                        values.push([]);
+                                        values[2].push(parameter);
+                                        console.log(values);
+                                } else if(values.length === 3){
+                                        values[2].push(parameter);
+                                        console.log(values);
+                                }
+                                
                         }
                 })
 
