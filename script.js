@@ -148,6 +148,8 @@ formContainer.appendChild(form);
 
 // }
 
+const values= [];
+
 function formCreator(title, elements, atributeType){
         const charactContainer = document.createElement('fieldset');
         const charactTitle = document.createElement('h3');
@@ -173,6 +175,17 @@ function formCreator(title, elements, atributeType){
                 inputCont.appendChild(charactInput);
                 inputCont.appendChild(charactLabel);
                 charactLabel.appendChild(charactLabelText);
+
+                document.getElementById(`is-${elem}`).addEventListener('change', (event)=>{
+                        let parameter = event.target.value;
+
+                        if(document.getElementById(`is-${elem}`).checked === true){
+                                console.log('funciona event listener');
+                                if(values.length < 3){
+                                        values.push(parameter);
+                                } // no se como vaciarlo cuando ya son 3 para que arme otro.
+                        }
+                })
 
         }
 }
@@ -207,3 +220,33 @@ document.getElementById("is-Todos los caracteres").addEventListener('change', fu
                 document.getElementById("is-Símbolos").disabled = false;
         }
     });
+
+
+const pass = (length, rules, characters) => {
+        const characts = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        const num = '0123456789';
+        const symb = '!@#$%^&*()'; 
+        let finalPassText = '';
+        if(rules === 'Solo letras'){
+            if( characters === 'Minúsculas'){
+                let newCharacts = characts.toLowerCase();
+                for(let i = 0; i < length; i++){
+                    const random = Math.floor(Math.random()* newCharacts.length);
+                    let elem = newCharacts.slice(random, random+1);
+                    finalPassText = finalPassText.concat(elem);
+                    finalPass.textContent = finalPassText;
+                }
+            
+        } else if (characters === 'Mayúsculas'){
+                for(let i = 0; i < length; i++){
+                    const random = Math.floor(Math.random()* characts.length);
+                    let elem = characts.slice(random, random+1);
+                    finalPassText = finalPassText.concat(elem);
+                    finalPass.textContent = finalPassText;
+                } 
+            }
+                
+            }
+    }
+
+pass(12, 'Solo letras', 'Mayúsculas')
