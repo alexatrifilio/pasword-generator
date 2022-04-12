@@ -181,8 +181,8 @@ const lenght = [6, 9, 12];
 const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
 const charact = ['Mayúsculas', 'Minúsculas', 'Números', 'Símbolos'];
 
-formCreator('longitud', lenght, 'radio')
-formCreator('reglas', rules, 'radio')
+formCreator('Longitud', lenght, 'radio')
+formCreator('Reglas', rules, 'radio')
 formCreator('Caracteres', charact, 'checkbox')
 
 
