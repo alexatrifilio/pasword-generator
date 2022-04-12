@@ -13,12 +13,20 @@ const passContainer = document.createElement('div');
 passContainer.setAttribute('class','card')
 const finalPass = document.createTextNode(''); 
 const iconContainer = document.createElement('div');
+
+        // Copy Icon //
+
 const copyIcon = document.createElement('span');
 const copyIconText = document.createTextNode('content_copy');
 copyIcon.appendChild(copyIconText);
-copyIcon.setAttribute('class','material-icons-outlined'); //not working
-const refreshIcon = document.createElement('i');
-refreshIcon.setAttribute('class','fas fa-copy')
+copyIcon.setAttribute('class','material-icons'); 
+
+        // Refresh Icon //
+
+const refreshIcon = document.createElement('span');
+const refreshIconText = document.createTextNode('autorenew');
+refreshIcon.appendChild(refreshIconText);
+refreshIcon.setAttribute('class','material-icons'); 
 
  // Append Password Card elemnts //
 
