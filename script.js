@@ -10,28 +10,50 @@ mainTitle.appendChild(mainTitleText);
 // Final Password Card //
 
 const passContainer = document.createElement('div');
-passContainer.setAttribute('class','card')
+const textPassContainer = document.createElement('div');
 const finalPass = document.createTextNode(''); 
+passContainer.appendChild(textPassContainer);
+passContainer.setAttribute('class','card')
+textPassContainer.setAttribute('id','password');
+//textPassContainer.setAttribute('class','card')
+
+
 const iconContainer = document.createElement('div');
 
-        // Copy Icon //
+// Copy Icon //
 
 const copyIcon = document.createElement('span');
 const copyIconText = document.createTextNode('content_copy');
 copyIcon.appendChild(copyIconText);
-copyIcon.setAttribute('class','material-icons'); 
+copyIcon.setAttribute('class','material-icons');
+copyIcon.setAttribute('onclick','copyPassword()'); 
 
-        // Refresh Icon //
+ // Copy password  function//
+function copyPassword() {
+        var passwordText = document.getElementById("password").textContent;
+        navigator.clipboard.writeText(passwordText);
+        alert("Copiado al portapapeles");
+}
+
+// Refresh Icon //
 
 const refreshIcon = document.createElement('span');
 const refreshIconText = document.createTextNode('autorenew');
 refreshIcon.appendChild(refreshIconText);
 refreshIcon.setAttribute('class','material-icons'); 
+refreshIcon.setAttribute('onclick','refresh()');
 
- // Append Password Card elemnts //
+// Refresh password  function//
+
+function refresh(){
+        window.location.reload("Refresh")
+      }
+
+
+// Append Password Card elemnts //
 
 body.appendChild(passContainer);
-passContainer.appendChild(finalPass);
+textPassContainer.appendChild(finalPass);
 passContainer.appendChild(iconContainer);
 iconContainer.appendChild(copyIcon);
 iconContainer.appendChild(refreshIcon);
@@ -222,6 +244,7 @@ const passGenerator = (length, rule, characters) => {
             let elem = finalCharacts.slice(random, random+1);
             finalPassText = finalPassText.concat(elem);
             finalPass.textContent = finalPassText;
+                        
         }
     
         return finalPassText;
@@ -229,6 +252,7 @@ const passGenerator = (length, rule, characters) => {
     }
     
     
+
     // --- TEST --- //
     const rta = passGenerator(12, 'lectura simple', [ 'charactsUpper', 'num', 'symb']);
     console.log(rta);
