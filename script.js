@@ -53,100 +53,9 @@ formContainer.appendChild(title);
 title.appendChild(titleText);
 formContainer.appendChild(form);
 
+        // Form creator //
 
-// --- Form Sections --- //
-
-// // Lenght section //
-
-// const lenghtContainer = document.createElement('fieldset');
-// const lenghtTitle = document.createElement('h3');
-// const lenghtTitleText = document.createTextNode('Longitud');
-// lenghtContainer.appendChild(lenghtTitle);
-// lenghtTitle.appendChild(lenghtTitleText);
-// form.appendChild(lenghtContainer);
-
-
-// const lenght = [6, 9, 12];
-
-// for(let elem of lenght){ //falta crear el form
-//         const inputCont = document.createElement('div');
-//         const lenghtInput = document.createElement('input');
-//         lenghtInput.setAttribute('type', 'radio');
-//         lenghtInput.setAttribute('name', 'lenght');
-//         lenghtInput.setAttribute('id', `is-${elem}`);
-//         lenghtInput.setAttribute('value', `${elem}`);
-//         const lenghtLabel = document.createElement('label');
-//         lenghtLabel.setAttribute('for', `is-${elem}`);
-//         const lenghtLabelText = document.createTextNode(elem + ' caracteres');
-
-//         lenghtContainer.appendChild(inputCont);
-//         inputCont.appendChild(lenghtInput);
-//         inputCont.appendChild(lenghtLabel);
-//         lenghtLabel.appendChild(lenghtLabelText);
-
-// }
-  
-
-
-//     // Rules section //
-
-// const rulesContainer = document.createElement('fieldset');
-// const rulesTitle = document.createElement('h3');
-// const rulesTitleText = document.createTextNode('Reglas');
-// rulesContainer.appendChild(rulesTitle);
-// rulesTitle.appendChild(rulesTitleText);
-// form.appendChild(rulesContainer);
-
-// const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
-
-// for(let elem of rules){
-//         const inputCont = document.createElement('div');
-//         const rulesInput = document.createElement('input');
-//         rulesInput.setAttribute('type', 'radio');
-//         rulesInput.setAttribute('name', 'rules');
-//         rulesInput.setAttribute('id', `is-${elem}`);
-//         rulesInput.setAttribute('value', `${elem}`);
-//         const rulesLabel = document.createElement('label');
-//         rulesLabel.setAttribute('for', `is-${elem}`);
-//         const rulesLabelText = document.createTextNode(elem);
-
-//         rulesContainer.appendChild(inputCont);
-//         inputCont.appendChild(rulesInput);
-//         inputCont.appendChild(rulesLabel);
-//         rulesLabel.appendChild(rulesLabelText);
-
-// }
-
-
-//     //Characters Section //
-
-// const charactContainer = document.createElement('fieldset');
-// const charactTitle = document.createElement('h3');
-// const charactTitleText = document.createTextNode('Caracteres');
-// charactContainer.appendChild(charactTitle);
-// charactTitle.appendChild(charactTitleText);
-// form.appendChild(charactContainer);
-
-
-// const charact = ['Mayúsculas', 'Minúsculas', 'Números', 'Símbolos'];
-
-// for(let elem of charact){
-//         const inputCont = document.createElement('div');
-//         const charactInput = document.createElement('input');
-//         charactInput.setAttribute('type', 'checkbox');
-//         charactInput.setAttribute('name', 'charact');
-//         charactInput.setAttribute('id', `is-${elem}`);
-//         charactInput.setAttribute('value', `${elem}`);
-//         const charactLabel = document.createElement('label');
-//         charactLabel.setAttribute('for', `is-${elem}`);
-//         const charactLabelText = document.createTextNode(elem);
-
-//         charactContainer.appendChild(inputCont);
-//         inputCont.appendChild(charactInput);
-//         inputCont.appendChild(charactLabel);
-//         charactLabel.appendChild(charactLabelText);
-
-// }
+const values= [];
 
 function formCreator(title, elements, atributeType){
         const charactContainer = document.createElement('fieldset');
@@ -162,7 +71,7 @@ function formCreator(title, elements, atributeType){
                 const inputCont = document.createElement('div');
                 const charactInput = document.createElement('input');
                 charactInput.setAttribute('type', atributeType);
-                charactInput.setAttribute('name', elements);
+                charactInput.setAttribute('name', charact);
                 charactInput.setAttribute('id', `is-${elem}`);
                 charactInput.setAttribute('value', `${elem}`);
                 const charactLabel = document.createElement('label');
@@ -174,17 +83,47 @@ function formCreator(title, elements, atributeType){
                 inputCont.appendChild(charactLabel);
                 charactLabel.appendChild(charactLabelText);
 
+
+                //values//
+
+                document.getElementById(`is-${elem}`).addEventListener('change', (event)=>{
+                        let parameter = event.target.value;
+                        console.log(parameter);
+
+                        if(document.getElementById(`is-${elem}`).checked === true){
+                                if(values.length < 2){
+                                        values.push(parameter);
+                                        console.log(values);
+                                }else if (values.length < 3){
+                                        values.push([]);
+                                        values[2].push(parameter);
+                                        console.log(values);
+                                } else if(values.length === 3){
+                                        values[2].push(parameter);
+                                        console.log(values);
+                                }
+                                
+                        }
+                })
+
         }
 }
+
+
+//  Creation of lists //
 
 const lenght = [6, 9, 12];
 const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
 const charact = ['Mayúsculas', 'Minúsculas', 'Números', 'Símbolos'];
+ 
 
-formCreator('longitud', lenght, 'radio')
-formCreator('reglas', rules, 'radio')
+formCreator('Longitud', lenght, 'radio')
+formCreator('Reglas', rules, 'radio')
 formCreator('Caracteres', charact, 'checkbox')
 
+
+
+// Radio and checkbox selector behaviour //
 
 document.getElementById("is-Solo letras").addEventListener('change', function (event) {
         if(event.target.value === 'Solo letras'){
@@ -207,3 +146,99 @@ document.getElementById("is-Todos los caracteres").addEventListener('change', fu
                 document.getElementById("is-Símbolos").disabled = false;
         }
     });
+
+
+
+
+  // Alex first approach function //
+
+// const pass = (length, rules, characters) => {
+//         const characts = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+//         const num = '0123456789';
+//         const symb = '!@#$%^&*()'; 
+//         let finalPassText = '';
+//         if(rules === 'Solo letras'){
+//             if( characters === 'Minúsculas'){
+//                 let newCharacts = characts.toLowerCase();
+//                 for(let i = 0; i < length; i++){
+//                     const random = Math.floor(Math.random()* newCharacts.length);
+//                     let elem = newCharacts.slice(random, random+1);
+//                     finalPassText = finalPassText.concat(elem);
+//                     finalPass.textContent = finalPassText;
+//                 }
+            
+//         } else if (characters === 'Mayúsculas'){
+//                 for(let i = 0; i < length; i++){
+//                     const random = Math.floor(Math.random()* characts.length);
+//                     let elem = characts.slice(random, random+1);
+//                     finalPassText = finalPassText.concat(elem);
+//                     finalPass.textContent = finalPassText;
+//                 } 
+//             }
+                
+//             }
+//     }
+
+// pass(12, 'Solo letras', 'Mayúsculas')
+
+
+
+
+    // ---Generate password --- //
+
+    //  Password Generator Function  //
+
+const passGenerator = (length, rule, characters) => {
+        const charactsLower = 'abcdefghijklmnopqrstuvwxyz';
+        const charactsUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const charactsUpperLS = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; // for Lectura Simple without Upper o and i.
+        const num = '01234567890123456789';
+        const symb = '!@#$%^&*()!@#$%^&*()'; 
+        let finalCharacts = '';
+        let finalPassText = '';
+    
+        if (characters.includes('charactsLower')){
+            finalCharacts = finalCharacts.concat(charactsLower);
+        }
+    
+        if (characters.includes('charactsUpper')){
+            if (rule === 'lectura simple'){
+                finalCharacts = finalCharacts.concat(charactsUpperLS);
+            } else {
+                finalCharacts = finalCharacts.concat(charactsUpper);
+            }
+        }
+    
+        if (characters.includes('num')){
+            finalCharacts = finalCharacts.concat(num);
+        }
+    
+        if (characters.includes('symb')){
+            finalCharacts = finalCharacts.concat(symb);
+        }
+    
+        for(let i = 0; i < length; i++){
+            const random = Math.floor(Math.random()*finalCharacts.length);
+            let elem = finalCharacts.slice(random, random+1);
+            finalPassText = finalPassText.concat(elem);
+            finalPass.textContent = finalPassText;
+        }
+    
+        return finalPassText;
+        
+    }
+    
+    
+    // --- TEST --- //
+    const rta = passGenerator(12, 'lectura simple', [ 'charactsUpper', 'num', 'symb']);
+    console.log(rta);
+    
+    // const rta2 = passGenerator(9,'solo letras' , ['charactsLower', 'charactsUpper']);
+    // console.log(rta2);
+    
+    // const rta3 = passGenerator(9, ['charactsLower',  'num', 'symb']);
+    // console.log(rta3);
+    
+    // const rta4 = passGenerator(6, [ 'charactsUpper', 'num']);
+    // console.log(rta4);
+    
