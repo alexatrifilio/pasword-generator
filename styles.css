@@ -25,15 +25,24 @@ h1{
     color: #454646;
 }
 
+h2{
+    text-align: center;
+}
+
 fieldset{
     border: none;
+}
+
+span{
+    height: 30px;
+    width: 30px;
 }
 
 .card{
     border-radius: 30px;
     background-color: rgb(213, 146, 222);
-    max-width: 500px;
-    padding: 20px;
+    width: 450px;
+    padding: 25px;
     display: flex;
     margin-bottom: 20px;
 }
@@ -41,6 +50,20 @@ fieldset{
 .cardLarge{
     flex-direction: column;
 }
+
+.cardSmall{
+    justify-content: space-between;
+}
+
+#password{
+    font-size: 1.5rem;
+    /* font-weight: bold; */
+}
+
+.material-icons.md-36{ 
+    font-size: 30px; 
+}
+
 
 .form{
     display: flex;

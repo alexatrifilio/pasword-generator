@@ -13,7 +13,8 @@ const passContainer = document.createElement('div');
 const textPassContainer = document.createElement('div');
 const finalPass = document.createTextNode(''); 
 passContainer.appendChild(textPassContainer);
-passContainer.setAttribute('class','card')
+passContainer.setAttribute('class','card');
+passContainer.classList.add('cardSmall');
 textPassContainer.setAttribute('id','password');
 //textPassContainer.setAttribute('class','card')
 
@@ -26,6 +27,7 @@ const copyIcon = document.createElement('span');
 const copyIconText = document.createTextNode('content_copy');
 copyIcon.appendChild(copyIconText);
 copyIcon.setAttribute('class','material-icons');
+copyIcon.classList.add('md-36');
 copyIcon.setAttribute('onclick','copyPassword()'); 
 
  // Copy password  function//
@@ -40,7 +42,8 @@ function copyPassword() {
 const refreshIcon = document.createElement('span');
 const refreshIconText = document.createTextNode('autorenew');
 refreshIcon.appendChild(refreshIconText);
-refreshIcon.setAttribute('class','material-icons'); 
+refreshIcon.setAttribute('class','material-icons');
+refreshIcon.classList.add('md-36'); 
 refreshIcon.setAttribute('onclick','refresh()');
 
 // Refresh password  function//
@@ -250,6 +253,11 @@ const passGenerator = (length, rule, characters) => {
         return finalPassText;
         
     }
+
+
+    form.addEventlister('submit', () => {
+        passGenerator();
+    })
     
     
 
