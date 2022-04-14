@@ -22,11 +22,16 @@ body{
 }
 
 h1{
-    color: #454646;
+    color: rgb(98, 41, 105);
+    margin-top: 60px;
 }
 
 h2{
     text-align: center;
+}
+
+h3{
+    margin-top: 0;
 }
 
 fieldset{
@@ -39,12 +44,13 @@ span{
 }
 
 .card{
+    background-color: rgb(193, 131, 201);
     border-radius: 30px;
-    background-color: rgb(213, 146, 222);
-    width: 450px;
-    padding: 25px;
+    box-shadow: -5px 16px 9px -11px rgba(0,0,0,0.7);
     display: flex;
     margin-bottom: 20px;
+    padding: 25px;
+    width: 450px;
 }
 
 .cardLarge{
@@ -67,6 +73,20 @@ span{
 
 .form{
     display: flex;
+    flex-wrap: wrap;
+}
+
+.btn{
+    align-self: center;
+    background-color: rgb(98, 41, 105);
+    border: none;
+    border-radius: 50px;
+    box-shadow: -5px 10px 9px -11px rgba(0,0,0,0.7);
+    color: #ebebeb;
+    font-size: 0.9rem;
+    margin: auto;
+    padding: 8px;
+    width: 150px;
 }
 
 @media (max-width: 480px) {
