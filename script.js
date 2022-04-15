@@ -13,7 +13,8 @@ const passContainer = document.createElement('div');
 const textPassContainer = document.createElement('div');
 const finalPass = document.createTextNode(''); 
 passContainer.appendChild(textPassContainer);
-passContainer.setAttribute('class','card')
+passContainer.setAttribute('class','card');
+passContainer.classList.add('cardSmall');
 textPassContainer.setAttribute('id','password');
 //textPassContainer.setAttribute('class','card')
 
@@ -26,6 +27,7 @@ const copyIcon = document.createElement('span');
 const copyIconText = document.createTextNode('content_copy');
 copyIcon.appendChild(copyIconText);
 copyIcon.setAttribute('class','material-icons');
+copyIcon.classList.add('md-36');
 copyIcon.setAttribute('onclick','copyPassword()'); 
 
  // Copy password  function//
@@ -40,7 +42,8 @@ function copyPassword() {
 const refreshIcon = document.createElement('span');
 const refreshIconText = document.createTextNode('autorenew');
 refreshIcon.appendChild(refreshIconText);
-refreshIcon.setAttribute('class','material-icons'); 
+refreshIcon.setAttribute('class','material-icons');
+refreshIcon.classList.add('md-36'); 
 refreshIcon.setAttribute('onclick','refresh()');
 
 // Refresh password  function//
@@ -164,6 +167,15 @@ function formCreator(title, elements, atributeType){
 
 
 
+// Submit Button //
+
+const submitBtn = document.createElement('button');
+submitBtn.setAttribute('type', 'submit');
+submitBtn.setAttribute('class', 'btn');
+const btnText = document.createTextNode('Generar')
+form.appendChild(submitBtn);
+submitBtn.appendChild(btnText);
+
 
 
 // Radio and checkbox selector behaviour //
@@ -190,7 +202,10 @@ document.getElementById("is-Todos los caracteres").addEventListener('change', fu
         }
     });
 
-
+form.addEventListener('submit', (event) => {
+        passGenerator(12, 'lectura simple', [ 'charactsUpper', 'num', 'symb']);
+        event.preventDefault();
+    });
 
     // ---Generate password --- //
 
@@ -238,6 +253,16 @@ const passGenerator = (length, rule, characters) => {
     }
 
     //  Creation of lists //
+
+    
+    
+
+    // --- TEST --- //
+//     const rta = passGenerator(12, 'lectura simple', [ 'charactsUpper', 'num', 'symb']);
+//     console.log(rta);
+    
+    // const rta2 = passGenerator(9,'solo letras' , ['charactsLower', 'charactsUpper']);
+    // console.log(rta2);
     
     const lenght = [6, 9, 12];
     const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
