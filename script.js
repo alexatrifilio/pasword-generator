@@ -201,41 +201,6 @@ document.getElementById("is-Todos los caracteres").addEventListener('change', fu
     });
 
 
-  
-
-  // Alex first approach function //
-
-// const pass = (length, rules, characters) => {
-//         const characts = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-//         const num = '0123456789';
-//         const symb = '!@#$%^&*()'; 
-//         let finalPassText = '';
-//         if(rules === 'Solo letras'){
-//             if( characters === 'Minúsculas'){
-//                 let newCharacts = characts.toLowerCase();
-//                 for(let i = 0; i < length; i++){
-//                     const random = Math.floor(Math.random()* newCharacts.length);
-//                     let elem = newCharacts.slice(random, random+1);
-//                     finalPassText = finalPassText.concat(elem);
-//                     finalPass.textContent = finalPassText;
-//                 }
-            
-//         } else if (characters === 'Mayúsculas'){
-//                 for(let i = 0; i < length; i++){
-//                     const random = Math.floor(Math.random()* characts.length);
-//                     let elem = characts.slice(random, random+1);
-//                     finalPassText = finalPassText.concat(elem);
-//                     finalPass.textContent = finalPassText;
-//                 } 
-//             }
-                
-//             }
-//     }
-
-// pass(12, 'Solo letras', 'Mayúsculas')
-
-
-
 
     // ---Generate password --- //
 
