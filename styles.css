@@ -43,6 +43,12 @@ span{
     width: 30px;
 }
 
+input:focus{
+    outline: none;
+    border:1px solid rgb(98, 41, 105);
+    box-shadow: 0 0 10px rgb(98, 41, 105);
+}
+
 .card{
     background-color: rgb(193, 131, 201);
     border-radius: 30px;
@@ -70,6 +76,12 @@ span{
     font-size: 30px; 
 }
 
+.material-icons:hover{
+    cursor: pointer;
+    color: rgb(98, 41, 105);
+
+}
+
 
 .form{
     display: flex;
@@ -87,6 +99,10 @@ span{
     margin: auto;
     padding: 8px;
     width: 150px;
+}
+
+.btn:hover{
+    box-shadow: 1px 1px 3px 3px  rgba(152, 25, 168, 0.637);
 }
 
 @media (max-width: 480px) {

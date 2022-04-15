@@ -1,3 +1,7 @@
+// Password Generator Script 
+// Language: Javascript 
+// Authors: Vanessa Neira and Alejandra Trifilio
+// Date 04-15-2022
 
 // ---Create elements--- //
 
@@ -16,7 +20,6 @@ passContainer.appendChild(textPassContainer);
 passContainer.setAttribute('class','card');
 passContainer.classList.add('cardSmall');
 textPassContainer.setAttribute('id','password');
-//textPassContainer.setAttribute('class','card')
 
 
 const iconContainer = document.createElement('div');
@@ -49,7 +52,8 @@ refreshIcon.setAttribute('onclick','refresh()');
 // Refresh password  function//
 
 function refresh(){
-        window.location.reload("Refresh")
+        // window.location.reload("Refresh") // To refresh window
+        passGenerator(values['longitud'], values['reglas'], values['caracteres']);
       }
 
 
@@ -78,13 +82,6 @@ formContainer.appendChild(title);
 title.appendChild(titleText);
 formContainer.appendChild(form);
 
-//Submit Button//
-
-const submitButton = document.createElement('button');
-const submitButtonText = document.createTextNode('Generar');
-submitButton.appendChild(submitButtonText);
-submitButton.setAttribute('id','submitButton');
-formContainer.appendChild(submitButton);
 
 // Form creator //
 
@@ -126,21 +123,6 @@ function formCreator(title, elements, atributeType){
                         let parameter = event.target.value;
                         console.log(parameter);
 
-                        // if(document.getElementById(`is-${elem}`).checked === true){
-                        //         if(values.length < 2){
-                        //                 values.push(parameter);
-                        //                 console.log(values);
-                        //         }else if (values.length < 3){
-                        //                 values.push([]);
-                        //                 values[2].push(parameter);
-                        //                 console.log(values);
-                        //         } else if(values.length === 3){
-                        //                 values[2].push(parameter);
-                        //                 console.log(values);
-                        //         }
-                                
-                        // }
-
                         let element = document.getElementById(`is-${elem}`)
 
                         if(element.checked === true){
@@ -157,13 +139,24 @@ function formCreator(title, elements, atributeType){
                         if(element.checked === false){
                                 values['caracteres'].splice(values['caracteres'].indexOf(parameter),1);
                         }
-                        console.log(values);
 
                         
                 })
 
         }
 }
+
+//  Creation of lists //    
+
+const lenght = [6, 9, 12];
+const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
+const charact = ['Mayúsculas', 'Minúsculas', 'Números', 'Símbolos'];
+
+
+formCreator('Longitud', lenght, 'radio')
+formCreator('Reglas', rules, 'radio')
+formCreator('Caracteres', charact, 'checkbox')
+
 
 
 
@@ -172,7 +165,8 @@ function formCreator(title, elements, atributeType){
 const submitBtn = document.createElement('button');
 submitBtn.setAttribute('type', 'submit');
 submitBtn.setAttribute('class', 'btn');
-const btnText = document.createTextNode('Generar')
+submitBtn.setAttribute('id', 'submitButton');
+const btnText = document.createTextNode('Generar');
 form.appendChild(submitBtn);
 submitBtn.appendChild(btnText);
 
@@ -202,10 +196,6 @@ document.getElementById("is-Todos los caracteres").addEventListener('change', fu
         }
     });
 
-form.addEventListener('submit', (event) => {
-        passGenerator(12, 'lectura simple', [ 'charactsUpper', 'num', 'symb']);
-        event.preventDefault();
-    });
 
     // ---Generate password --- //
 
@@ -225,7 +215,7 @@ const passGenerator = (length, rule, characters) => {
         }
     
         if (characters.includes('Mayúsculas')){
-                if (rule === 'lectura simple'){
+                if (rule === 'Lectura simple'){
                 finalCharacts = finalCharacts.concat(charactsUpperLS);
         } else {
                 finalCharacts = finalCharacts.concat(charactsUpper);
@@ -252,32 +242,11 @@ const passGenerator = (length, rule, characters) => {
         
     }
 
-    //  Creation of lists //
 
+        //  Generate password event //
     
-    
-
-    // --- TEST --- //
-//     const rta = passGenerator(12, 'lectura simple', [ 'charactsUpper', 'num', 'symb']);
-//     console.log(rta);
-    
-    // const rta2 = passGenerator(9,'solo letras' , ['charactsLower', 'charactsUpper']);
-    // console.log(rta2);
-    
-    const lenght = [6, 9, 12];
-    const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
-    const charact = ['Mayúsculas', 'Minúsculas', 'Números', 'Símbolos'];
-     
-    
-    formCreator('Longitud', lenght, 'radio')
-    formCreator('Reglas', rules, 'radio')
-    formCreator('Caracteres', charact, 'checkbox')
-
-
-        //  Generate password button //
-    document.getElementById("submitButton").addEventListener('click', function (event) {
-            passGenerator(values['longitud'], String(values['reglas']), values['caracteres']);
+form.addEventListener('submit', (event) => {
+         passGenerator(values['longitud'], values['reglas'], values['caracteres']);
+        event.preventDefault();
     });
-    
-
     
