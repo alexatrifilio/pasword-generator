@@ -75,9 +75,17 @@ formContainer.appendChild(title);
 title.appendChild(titleText);
 formContainer.appendChild(form);
 
-        // Form creator //
+//Submit Button//
 
-const values= [];
+const submitButton = document.createElement('button');
+const submitButtonText = document.createTextNode('Generar');
+submitButton.appendChild(submitButtonText);
+submitButton.setAttribute('id','submitButton');
+formContainer.appendChild(submitButton);
+
+// Form creator //
+
+values = {}
 
 function formCreator(title, elements, atributeType){
         const charactContainer = document.createElement('fieldset');
@@ -88,12 +96,13 @@ function formCreator(title, elements, atributeType){
         form.appendChild(charactContainer);
 
         const charact = elements
+        values[title.toLowerCase()]
 
         for(let elem of charact){
                 const inputCont = document.createElement('div');
                 const charactInput = document.createElement('input');
                 charactInput.setAttribute('type', atributeType);
-                charactInput.setAttribute('name', charact);
+                charactInput.setAttribute('name', title.toLowerCase());
                 charactInput.setAttribute('id', `is-${elem}`);
                 charactInput.setAttribute('value', `${elem}`);
                 const charactLabel = document.createElement('label');
@@ -108,24 +117,46 @@ function formCreator(title, elements, atributeType){
 
                 //values//
 
+                values['caracteres'] = []
+
                 document.getElementById(`is-${elem}`).addEventListener('change', (event)=>{
                         let parameter = event.target.value;
                         console.log(parameter);
 
-                        if(document.getElementById(`is-${elem}`).checked === true){
-                                if(values.length < 2){
-                                        values.push(parameter);
-                                        console.log(values);
-                                }else if (values.length < 3){
-                                        values.push([]);
-                                        values[2].push(parameter);
-                                        console.log(values);
-                                } else if(values.length === 3){
-                                        values[2].push(parameter);
-                                        console.log(values);
-                                }
+                        // if(document.getElementById(`is-${elem}`).checked === true){
+                        //         if(values.length < 2){
+                        //                 values.push(parameter);
+                        //                 console.log(values);
+                        //         }else if (values.length < 3){
+                        //                 values.push([]);
+                        //                 values[2].push(parameter);
+                        //                 console.log(values);
+                        //         } else if(values.length === 3){
+                        //                 values[2].push(parameter);
+                        //                 console.log(values);
+                        //         }
                                 
+                        // }
+
+                        let element = document.getElementById(`is-${elem}`)
+
+                        if(element.checked === true){
+                                if(element.name.toLowerCase()==='longitud'){
+                                        values['longitud'] = parameter;
+                                }
+                                if(element.name.toLowerCase()==='reglas'){
+                                        values['reglas'] = parameter;
+                                }
+                                if(element.name.toLowerCase()==='caracteres'){
+                                        values['caracteres'].push(parameter);
+                                }
                         }
+                        if(element.checked === false){
+                                values['caracteres'].splice(values['caracteres'].indexOf(parameter),1);
+                        }
+                        console.log(values);
+
+                        
                 })
 
         }
@@ -170,7 +201,7 @@ document.getElementById("is-Todos los caracteres").addEventListener('change', fu
     });
 
 
-
+  
 
   // Alex first approach function //
 
@@ -219,11 +250,11 @@ const passGenerator = (length, rule, characters) => {
         let finalCharacts = '';
         let finalPassText = '';
     
-        if (characters.includes('charactsLower')){
+        if (characters.includes('Minúsculas')){
             finalCharacts = finalCharacts.concat(charactsLower);
         }
     
-        if (characters.includes('charactsUpper')){
+        if (characters.includes('Mayúsculas')){
             if (rule === 'lectura simple'){
                 finalCharacts = finalCharacts.concat(charactsUpperLS);
             } else {
@@ -231,11 +262,11 @@ const passGenerator = (length, rule, characters) => {
             }
         }
     
-        if (characters.includes('num')){
+        if (characters.includes('Números')){
             finalCharacts = finalCharacts.concat(num);
         }
     
-        if (characters.includes('symb')){
+        if (characters.includes('Símbolos')){
             finalCharacts = finalCharacts.concat(symb);
         }
     
@@ -250,12 +281,15 @@ const passGenerator = (length, rule, characters) => {
         return finalPassText;
         
     }
-    
+
+    document.getElementById("submitButton").addEventListener('click', function (event) {
+            passGenerator(values['longitud'], String(values['reglas']), values['caracteres']);
+    });
     
 
     // --- TEST --- //
-    const rta = passGenerator(12, 'lectura simple', [ 'charactsUpper', 'num', 'symb']);
-    console.log(rta);
+    //const rta = passGenerator(12, 'lectura simple', [ 'charactsUpper', 'num', 'symb']);
+    //console.log(rta);
     
     // const rta2 = passGenerator(9,'solo letras' , ['charactsLower', 'charactsUpper']);
     // console.log(rta2);
@@ -265,4 +299,7 @@ const passGenerator = (length, rule, characters) => {
     
     // const rta4 = passGenerator(6, [ 'charactsUpper', 'num']);
     // console.log(rta4);
-    
+
+//     document.getElementById("is-Solo letras").addEventListener('change', function (event) {
+//             console.log(event.target.value);
+//     });
