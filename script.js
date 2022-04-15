@@ -85,7 +85,7 @@ formContainer.appendChild(submitButton);
 
 // Form creator //
 
-values = {}
+values = {} //values object
 
 function formCreator(title, elements, atributeType){
         const charactContainer = document.createElement('fieldset');
@@ -163,16 +163,6 @@ function formCreator(title, elements, atributeType){
 }
 
 
-//  Creation of lists //
-
-const lenght = [6, 9, 12];
-const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
-const charact = ['Mayúsculas', 'Minúsculas', 'Números', 'Símbolos'];
- 
-
-formCreator('Longitud', lenght, 'radio')
-formCreator('Reglas', rules, 'radio')
-formCreator('Caracteres', charact, 'checkbox')
 
 
 
@@ -185,14 +175,14 @@ document.getElementById("is-Solo letras").addEventListener('change', function (e
                 document.getElementById("is-Símbolos").checked = false;
                 document.getElementById("is-Símbolos").disabled = true;
         }
-    });
+});
 document.getElementById("is-Lectura simple").addEventListener('change', function (event) {
         if(event.target.value === 'Lectura simple'){
                 document.getElementById("is-Números").disabled = false;
                 document.getElementById("is-Símbolos").checked = false;
                 document.getElementById("is-Símbolos").disabled = true;
         }
-    });
+});
 document.getElementById("is-Todos los caracteres").addEventListener('change', function (event) {
         if(event.target.value === 'Todos los caracteres'){
                 document.getElementById("is-Números").disabled = false;
@@ -205,7 +195,7 @@ document.getElementById("is-Todos los caracteres").addEventListener('change', fu
     // ---Generate password --- //
 
     //  Password Generator Function  //
-
+    
 const passGenerator = (length, rule, characters) => {
         const charactsLower = 'abcdefghijklmnopqrstuvwxyz';
         const charactsUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -220,15 +210,15 @@ const passGenerator = (length, rule, characters) => {
         }
     
         if (characters.includes('Mayúsculas')){
-            if (rule === 'lectura simple'){
+                if (rule === 'lectura simple'){
                 finalCharacts = finalCharacts.concat(charactsUpperLS);
-            } else {
+        } else {
                 finalCharacts = finalCharacts.concat(charactsUpper);
-            }
+        }
         }
     
         if (characters.includes('Números')){
-            finalCharacts = finalCharacts.concat(num);
+                finalCharacts = finalCharacts.concat(num);
         }
     
         if (characters.includes('Símbolos')){
@@ -247,24 +237,22 @@ const passGenerator = (length, rule, characters) => {
         
     }
 
+    //  Creation of lists //
+    
+    const lenght = [6, 9, 12];
+    const rules = ['Solo letras', 'Lectura simple', 'Todos los caracteres'];
+    const charact = ['Mayúsculas', 'Minúsculas', 'Números', 'Símbolos'];
+     
+    
+    formCreator('Longitud', lenght, 'radio')
+    formCreator('Reglas', rules, 'radio')
+    formCreator('Caracteres', charact, 'checkbox')
+
+
+        //  Generate password button //
     document.getElementById("submitButton").addEventListener('click', function (event) {
             passGenerator(values['longitud'], String(values['reglas']), values['caracteres']);
     });
     
 
-    // --- TEST --- //
-    //const rta = passGenerator(12, 'lectura simple', [ 'charactsUpper', 'num', 'symb']);
-    //console.log(rta);
     
-    // const rta2 = passGenerator(9,'solo letras' , ['charactsLower', 'charactsUpper']);
-    // console.log(rta2);
-    
-    // const rta3 = passGenerator(9, ['charactsLower',  'num', 'symb']);
-    // console.log(rta3);
-    
-    // const rta4 = passGenerator(6, [ 'charactsUpper', 'num']);
-    // console.log(rta4);
-
-//     document.getElementById("is-Solo letras").addEventListener('change', function (event) {
-//             console.log(event.target.value);
-//     });
