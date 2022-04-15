@@ -1,7 +1,11 @@
+/* Password Generator Stylesheet */
+/* Language: CSS */
+/* Authors: Vanessa Neira and Alejandra Trifilio */
+/* Date 04-15-2022 */
 
 
+ 
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed&display=swap');
-
 
 
 *,
@@ -9,6 +13,8 @@
 *::after {
   box-sizing: border-box;
 }
+
+/* Tag selectors*/
 
 body{
     margin: 0;
@@ -46,8 +52,13 @@ span{
 input:focus{
     outline: none;
     border:1px solid rgb(98, 41, 105);
-    box-shadow: 0 0 10px rgb(98, 41, 105);
 }
+
+label:hover{
+    color: rgb(98, 41, 105);
+}
+
+/* Class selectors */
 
 .card{
     background-color: rgb(193, 131, 201);
@@ -69,7 +80,6 @@ input:focus{
 
 #password{
     font-size: 1.5rem;
-    /* font-weight: bold; */
 }
 
 .material-icons.md-36{ 
@@ -79,7 +89,6 @@ input:focus{
 .material-icons:hover{
     cursor: pointer;
     color: rgb(98, 41, 105);
-
 }
 
 
@@ -99,11 +108,15 @@ input:focus{
     margin: auto;
     padding: 8px;
     width: 150px;
+    font-family: 'Encode Sans Condensed', sans-serif;
 }
 
 .btn:hover{
     box-shadow: 1px 1px 3px 3px  rgba(152, 25, 168, 0.637);
 }
+
+
+/* Media query*/
 
 @media (max-width: 480px) {
     .card{
