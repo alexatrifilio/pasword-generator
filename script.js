@@ -180,6 +180,7 @@ document.getElementById("is-Solo letras").addEventListener('change', function (e
                 document.getElementById("is-Números").disabled = true;
                 document.getElementById("is-Símbolos").checked = false;
                 document.getElementById("is-Símbolos").disabled = true;
+
                 if(values['caracteres'].includes("Números")){
                         values['caracteres'].splice(values['caracteres'].indexOf("Números"),1);
                 }
@@ -193,6 +194,7 @@ document.getElementById("is-Lectura simple").addEventListener('change', function
                 document.getElementById("is-Números").disabled = false;
                 document.getElementById("is-Símbolos").checked = false;
                 document.getElementById("is-Símbolos").disabled = true;
+
                 if(values['caracteres'].includes("Símbolos")){
                         values['caracteres'].splice(values['caracteres'].indexOf("Símbolos"),1);
                 }
@@ -255,7 +257,11 @@ const passGenerator = (length, rule, characters) => {
         //  Generate password event //
     
 form.addEventListener('submit', (event) => {
-         passGenerator(values['longitud'], values['reglas'], values['caracteres']);
-        event.preventDefault();
+        if (values['longitud'] === undefined || values['reglas'] === undefined || values['caracteres'].length === 0){
+                alert('Debes seleccionar al menos una opción en cada campo');
+        } else {
+                passGenerator(values['longitud'], values['reglas'], values['caracteres']);
+                event.preventDefault();
+        }
     });
     
