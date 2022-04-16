@@ -139,10 +139,10 @@ function formCreator(title, elements, atributeType){
                         if(element.checked === false){
                                 values['caracteres'].splice(values['caracteres'].indexOf(parameter),1);
                         }
+                        console.log(values);
 
-                        
                 })
-
+                
         }
 }
 
@@ -180,6 +180,12 @@ document.getElementById("is-Solo letras").addEventListener('change', function (e
                 document.getElementById("is-Números").disabled = true;
                 document.getElementById("is-Símbolos").checked = false;
                 document.getElementById("is-Símbolos").disabled = true;
+                if(values['caracteres'].includes("Números")){
+                        values['caracteres'].splice(values['caracteres'].indexOf("Números"),1);
+                }
+                if(values['caracteres'].includes("Símbolos")){
+                        values['caracteres'].splice(values['caracteres'].indexOf("Símbolos"),1);
+                }
         }
 });
 document.getElementById("is-Lectura simple").addEventListener('change', function (event) {
@@ -187,6 +193,9 @@ document.getElementById("is-Lectura simple").addEventListener('change', function
                 document.getElementById("is-Números").disabled = false;
                 document.getElementById("is-Símbolos").checked = false;
                 document.getElementById("is-Símbolos").disabled = true;
+                if(values['caracteres'].includes("Símbolos")){
+                        values['caracteres'].splice(values['caracteres'].indexOf("Símbolos"),1);
+                }
         }
 });
 document.getElementById("is-Todos los caracteres").addEventListener('change', function (event) {
