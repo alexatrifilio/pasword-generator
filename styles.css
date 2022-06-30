@@ -19,7 +19,8 @@
 body{
     margin: 0;
     min-height: 100vh;
-    background-color: #ccfff6;
+    background: rgb(0,33,36);
+    background: linear-gradient(90deg, rgba(0,33,36,1) 0%, rgba(9,112,121,1) 49%, rgba(0,212,255,1) 100%); 
     font-family: 'Encode Sans Condensed', sans-serif;
     color: #ebebeb;
     display: flex;
@@ -28,7 +29,6 @@ body{
 }
 
 h1{
-    color: rgb(98, 41, 105);
     margin-top: 60px;
 }
 
@@ -51,17 +51,17 @@ span{
 
 input:focus{
     outline: none;
-    border:1px solid rgb(98, 41, 105);
+    border:1px solid rgb(11, 5, 83);
 }
 
 label:hover{
-    color: rgb(98, 41, 105);
+    color: rgb(11, 5, 83);
 }
 
 /* Class selectors */
 
 .card{
-    background-color: rgb(193, 131, 201);
+    background-color: #044e55;
     border-radius: 30px;
     box-shadow: -5px 16px 9px -11px rgba(0,0,0,0.7);
     display: flex;
@@ -88,7 +88,7 @@ label:hover{
 
 .material-icons:hover{
     cursor: pointer;
-    color: rgb(98, 41, 105);
+    color: rgb(11, 5, 83);
 }
 
 
@@ -99,7 +99,7 @@ label:hover{
 
 .btn{
     align-self: center;
-    background-color: rgb(98, 41, 105);
+    background-color: #0c7388;
     border: none;
     border-radius: 50px;
     box-shadow: -5px 10px 9px -11px rgba(0,0,0,0.7);
@@ -112,7 +112,7 @@ label:hover{
 }
 
 .btn:hover{
-    box-shadow: 1px 1px 3px 3px  rgba(152, 25, 168, 0.637);
+    box-shadow: 1px 1px 3px 3px  rgba(73, 162, 197, 0.637);
 }
 
 
